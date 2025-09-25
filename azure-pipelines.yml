@@ -1,5 +1,5 @@
 trigger:
-- main   # Run pipeline when you push to main branch
+- main   # runs on every push to main branch
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -8,7 +8,7 @@ steps:
 # Step 1: Use Python
 - task: UsePythonVersion@0
   inputs:
-    versionSpec: '3.10'   # use your Python version (match VS Code)
+    versionSpec: '3.10'
 
 # Step 2: Install dependencies
 - script: |
@@ -16,7 +16,7 @@ steps:
     pip install -r requirements.txt
   displayName: 'Install dependencies'
 
-# Step 3: Run your app
+# Step 3: Run your main RAG app
 - script: |
-    python main.py
-  displayName: 'Run Mats Application'
+    python SOK_XGBoost_Gradnt_Boost_Breast_Cancer.py
+  displayName: 'Run RAG Application'
