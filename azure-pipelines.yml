@@ -1,0 +1,22 @@
+trigger:
+- main   # Run pipeline when you push to main branch
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+# Step 1: Use Python
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.10'   # use your Python version (match VS Code)
+
+# Step 2: Install dependencies
+- script: |
+    python -m pip install --upgrade pip
+    pip install -r requirements.txt
+  displayName: 'Install dependencies'
+
+# Step 3: Run your app
+- script: |
+    python main.py
+  displayName: 'Run Mats Application'
